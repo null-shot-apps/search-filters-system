@@ -19,10 +19,9 @@
   }
 }
 
-/* Non-scroll and full-height baseline */
+/* Allow scrolling for content pages */
 html, body {
-  height: 100%;
-  overflow: hidden;
+  min-height: 100%;
 }
 
 body {
@@ -147,3 +146,47 @@ body {
 .animate-bounce-horizontal {
   animation: bounce-horizontal 1.5s ease-in-out infinite;
 }
+
+/* Mobile-first optimizations */
+@media (max-width: 768px) {
+  /* Reduce animation complexity on mobile for performance */
+  .bg-aurora-layer-1,
+  .bg-aurora-layer-2,
+  .bg-aurora-layer-3 {
+    animation-duration: 30s;
+  }
+  
+  .bg-particles {
+    opacity: 0.5;
+  }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Optimize select elements for mobile */
+select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='white'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.5rem center;
+  background-size: 1.5em 1.5em;
+  padding-right: 2.5rem;
+}
+
+/* Dark mode select options */
+select option {
+  background-color: #1a1a1a;
+  color: white;
+}
+
+/* Improve touch targets for mobile */
+@media (max-width: 768px) {
+  button, a, input, select {
+    min-height: 44px;
+  }
+}
+
+
